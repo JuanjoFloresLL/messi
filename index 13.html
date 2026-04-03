@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Lionel Messi | Leyenda del Fútbol Mundial</title>
+    <!-- Fuentes y estilos base -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fefefe;
+            color: #1e293b;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+
+        /* Paleta inspirada en Argentina y Barcelona */
+        :root {
+            --arg-blue: #75aadb;
+            --arg-white: #ffffff;
+            --arg-gold: #f5c542;
+            --barca-claret: #a50044;
+            --barca-blue: #004d98;
+            --dark-slate: #0f172a;
+            --soft-gray: #f1f5f9;
+            --card-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Header hero */
+        .hero {
+            background: linear-gradient(135deg, #022b3a 0%, #1f7a8c 100%);
+            color: white;
+            padding: 2rem 1.5rem 4rem 1.5rem;
+            text-align: center;
+            clip-path: polygon(0 0, 100% 0, 100% 92%, 0 100%);
+        }
+
+        .hero-content {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.2rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+        }
+
+        .hero .sub {
+            font-size: 1.3rem;
+            font-weight: 400;
+            margin-bottom: 2rem;
+            border-bottom: 2px solid var(--arg-gold);
+            display: inline-block;
+            padding-bottom: 0.3rem;
+        }
+
+        .hero-stats {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .stat {
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(4px);
+            border-radius: 40px;
+            padding: 0.5rem 1.5rem;
+            font-weight: 600;
+        }
+
+        .stat i {
+            margin-right: 8px;
+            color: var(--arg-gold);
+        }
+
+        /* Navegación rápida */
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.2rem;
+            background: white;
+            padding: 1rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(8px);
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            font-weight: 600;
+            color: #1e293b;
+            padding: 0.4rem 0.8rem;
+            border-radius: 30px;
+            transition: all 0.2s;
+            font-size: 0.9rem;
+        }
+
+        .nav-links a:hover {
+            background: var(--arg-blue);
+            color: white;
+        }
+
+        /* Contenedor principal */
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+
+        /* Tarjetas y secciones */
+        section {
+            margin-bottom: 4rem;
+            scroll-margin-top: 80px;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1.8rem;
+            border-left: 6px solid var(--arg-gold);
+            padding-left: 1rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.8rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: 28px;
+            box-shadow: var(--card-shadow);
+            overflow: hidden;
+            transition: transform 0.25s ease, box-shadow 0.2s;
+            border: 1px solid #eef2ff;
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 25px 40px -12px rgba(0,0,0,0.2);
+        }
+
+        .card-img {
+            height: 180px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .card-content {
+            padding: 1.5rem;
+        }
+
+        .card-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.6rem;
+        }
+
+        .badge {
+            display: inline-block;
+            background: var(--arg-blue);
+            color: white;
+            font-size: 0.7rem;
+            border-radius: 30px;
+            padding: 0.2rem 0.8rem;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+        }
+
+        /* Timeline estilo */
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .timeline-item {
+            background: var(--soft-gray);
+            padding: 1rem 1.5rem;
+            border-radius: 24px;
+            border-left: 6px solid var(--barca-claret);
+        }
+
+        .timeline-year {
+            font-weight: 800;
+            font-size: 1.2rem;
+            color: var(--barca-blue);
+        }
+
+        /* estadísticas destacadas */
+        .stats-showcase {
+            background: linear-gradient(120deg, #0f2027, #203a43, #2c5364);
+            color: white;
+            border-radius: 40px;
+            padding: 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            text-align: center;
+            gap: 1.5rem;
+        }
+
+        .stats-showcase .stat-circle {
+            background: rgba(255,255,255,0.1);
+            border-radius: 60px;
+            padding: 1rem 1.8rem;
+            min-width: 140px;
+        }
+
+        .stat-number {
+            font-size: 2.4rem;
+            font-weight: 800;
+            display: block;
+            line-height: 1;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-slate);
+            color: #cbd5e1;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 2rem;
+            font-size: 0.85rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 700px) {
+            .hero h1 {
+                font-size: 2.3rem;
+            }
+            .hero .sub {
+                font-size: 1rem;
+            }
+            .section-title {
+                font-size: 1.6rem;
+            }
+        }
+        .quote {
+            font-style: italic;
+            background: #fef9e6;
+            border-radius: 32px;
+            padding: 1.8rem;
+            text-align: center;
+            font-size: 1.1rem;
+            border: 1px solid #ffe6b3;
+        }
+        .btn-icon {
+            background: transparent;
+            border: none;
+            cursor: pointer;
+        }
+        hr {
+            margin: 1rem 0;
+        }
+    </style>
+</head>
+<body>
+
+<header class="hero">
+    <div class="hero-content">
+        <h1>Lionel Andrés Messi</h1>
+        <div class="sub">El mejor futbolista de todos los tiempos</div>
+        <p style="max-width: 700px; margin: 0 auto;">8 Balones de Oro · Campeón del Mundo · Leyenda del Barcelona y la Selección Argentina</p>
+        <div class="hero-stats">
+            <div class="stat"><i class="fas fa-futbol"></i> 842+ Goles oficiales</div>
+            <div class="stat"><i class="fas fa-trophy"></i> 44 Títulos oficiales</div>
+            <div class="stat"><i class="fas fa-star"></i> 3 Copas del Mundo (1x campeón, 2x MVP)</div>
+        </div>
+    </div>
+</header>
+
+<div class="nav-links">
+    <a href="#biografia"><i class="fas fa-user"></i> Biografía</a>
+    <a href="#carrera"><i class="fas fa-history"></i> Trayectoria</a>
+    <a href="#logros"><i class="fas fa-medal"></i> Logros & Títulos</a>
+    <a href="#records"><i class="fas fa-chart-line"></i> Récords</a>
+    <a href="#seleccion"><i class="fas fa-flag-checkered"></i> Selección</a>
+</div>
+
+<main class="container">
+    <!-- Biografía -->
+    <section id="biografia">
+        <h2 class="section-title">⚡ El comienzo de una leyenda</h2>
+        <div class="card-grid">
+            <div class="card">
+                <div class="card-img" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/c/c1/Lionel_Messi_20180626.jpg'); background-size: cover; background-position: 50% 20%;"></div>
+                <div class="card-content">
+                    <span class="badge">Rosario, Argentina</span>
+                    <h3>Infancia y orígenes</h3>
+                    <p>Nacido el 24 de junio de 1987 en Rosario. Desde muy pequeño mostró un talento extraordinario. Con 11 años le diagnosticaron una deficiencia de hormona de crecimiento. El FC Barcelona se ofreció a pagar su tratamiento, y la familia Messi se mudó a España.</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-img" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/b/b4/Lionel_Messi_FC_Barcelona_2012.jpg'); background-size: cover; background-position: 50% 30%;"></div>
+                <div class="card-content">
+                    <span class="badge">La Masía</span>
+                    <h3>Formación en Barcelona</h3>
+                    <p>Ingresó a las categorías inferiores del Barça con 13 años. Rápidamente brilló en el Juvenil B y en 2004, con 17 años, debutó en el primer equipo bajo la dirección de Frank Rijkaard. El resto es historia.</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-img" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/2/2b/Messi_vs_Australia_2022.jpg'); background-size: cover; background-position: 50% 50%;"></div>
+                <div class="card-content">
+                    <span class="badge">Ícono global</span>
+                    <h3>Legado eterno</h3>
+                    <p>Reconocido por su visión de juego, regate exquisito, pases milimétricos y definición. Inspira a millones y rompió todos los paradigmas del fútbol moderno. En 2022 conquistó la Copa del Mundo con Argentina, cerrando su obra maestra.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trayectoria profesional (carrera) -->
+    <section id="carrera">
+        <h2 class="section-title">📅 Trayectoria profesional</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-year">2004 - 2021 | FC Barcelona</div>
+                <p><strong>Era dorada:</strong> 778 partidos oficiales, 672 goles, 269 asistencias. Ganó 10 Ligas, 7 Copas del Rey, 4 Champions League (2006, 2009, 2011, 2015), 3 Mundiales de Clubes. Formó parte del mejor equipo de la historia con Guardiola, y del famoso tridente MSN.</p>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-year">2021 - 2023 | Paris Saint-Germain</div>
+                <p>Tras una salida emotiva del Barça, fichó por el PSG. En dos temporadas: 32 goles, 35 asistencias, conquistó 2 Ligue 1 y 1 Supercopa de Francia. Aunque con altibajos, siguió mostrando su calidad y liderazgo.</p>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-year">2023 - presente | Inter Miami CF</div>
+                <p>Revolucionó la MLS. En su primer año lideró al Inter Miami a ganar la Leagues Cup 2023 (primer título en la historia del club). Elegido MVP del torneo y Balón de Oro de la MLS. Sigue demostrando que la magia no entiende de edades.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Logros y títulos principales -->
+    <section id="logros">
+        <h2 class="section-title">🏆 Palmarés y distinciones</h2>
+        <div class="card-grid">
+            <div class="card">
+                <div class="card-content">
+                    <h3><i class="fas fa-futbol"></i> Colectivos (clubes)</h3>
+                    <ul style="margin-top: 10px; margin-left: 1.2rem; line-height: 1.6;">
+                        <li>10 LaLigas, 7 Copas del Rey (Barça)</li>
+                        <li>4 UEFA Champions League</li>
+                        <li>3 Supercopas de Europa, 3 Mundiales de Clubes</li>
+                        <li>2 Ligue 1 (PSG), 1 Leagues Cup (Inter Miami)</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-content">
+                    <h3><i class="fas fa-globe-americas"></i> Selección Argentina</h3>
+                    <ul style="margin-top: 10px; margin-left: 1.2rem; line-height: 1.6;">
+                        <li><strong>Copa Mundial de la FIFA 2022</strong> (Campeón)</li>
+                        <li>Copa América 2021</li>
+                        <li>Finalissima 2022 (contra Italia)</li>
+                        <li>Medalla de Oro Olímpica 2008</li>
+                        <li>Subcampeón del Mundo 2014</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-content">
+                    <h3><i class="fas fa-crown"></i> Individuales</h3>
+                    <ul style="margin-top: 10px; margin-left: 1.2rem; line-height: 1.6;">
+                        <li>8 Balones de Oro (récord)</li>
+                        <li>6 Botas de Oro (máximo goleador europeo)</li>
+                        <li>2 MVP del Mundial (2014, 2022)</li>
+                        <li>2 Balones de Oro de la Copa América</li>
+                        <li>Premio Laureus, The Best FIFA, entre otros.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Récords históricos -->
+    <section id="records">
+        <h2 class="section-title">📊 Récords que asombran al mundo</h2>
+        <div class="stats-showcase">
+            <div class="stat-circle"><span class="stat-number">672</span> Goles en Barcelona <br>(máximo histórico)</div>
+            <div class="stat-circle"><span class="stat-number">474</span> Goles en LaLiga <br>(récord absoluto)</div>
+            <div class="stat-circle"><span class="stat-number">106</span> Goles en UEFA Champions <br>(2º máximo histórico)</div>
+            <div class="stat-circle"><span class="stat-number">91</span> Goles en un año natural <br>(2012 - Récord Guinness)</div>
+            <div class="stat-circle"><span class="stat-number">+300</span> Asistencias oficiales <br>(creador histórico)</div>
+        </div>
+        <div class="quote" style="margin-top: 2rem;">
+            <i class="fas fa-quote-left" style="color: var(--arg-gold); font-size: 1.5rem; margin-right: 8px;"></i> 
+            "Messi es el mejor de la historia, un genio. Nadie hará nunca lo que él ha hecho." — Pep Guardiola
+        </div>
+    </section>
+
+    <!-- Selección argentina + Copa del Mundo -->
+    <section id="seleccion">
+        <h2 class="section-title">🇦🇷 La gloria con la Albiceleste</h2>
+        <div class="card-grid">
+            <div class="card">
+                <div class="card-img" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/3/3b/Lionel_Messi_%28Argentina%29_2022.jpg'); background-size: cover; background-position: 50% 20%;"></div>
+                <div class="card-content">
+                    <h3>El sueño cumplido: Qatar 2022</h3>
+                    <p>Después de años de lucha y finales perdidas, Messi lideró a Argentina a la conquista de la Copa del Mundo. Marcó 7 goles, fue elegido mejor jugador del torneo y anotó en la final ante Francia. Un momento que selló su legado definitivo.</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-content">
+                    <h3>Copa América 2021</h3>
+                    <p>En el Maracaná, Argentina venció a Brasil. Messi, deslumbrante, obtuvo su primer gran título con la mayor. Fue MVP del torneo, rompiendo la sequía de 28 años sin títulos para Argentina.</p>
+                    <hr>
+                    <h3>Finalissima 2022</h3>
+                    <p>Goleada 3-0 a Italia en Wembley, con dos asistencias de Messi. Otra joya en su vitrina.</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-content">
+                    <h3>Números con Argentina</h3>
+                    <p><strong>Partidos:</strong> 178 (récord absoluto) <br>
+                    <strong>Goles:</strong> 106 (máximo goleador histórico) <br>
+                    <strong>Mundiales:</strong> 5 ediciones disputadas, 13 goles en total (3º en la historia). <br>
+                    Liderazgo, sacrificio y magia: el capitán que unió a un país.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Datos extra: vida personal y legado -->
+    <section>
+        <h2 class="section-title">❤️ Más allá del fútbol</h2>
+        <div class="card-grid">
+            <div class="card">
+                <div class="card-content">
+                    <h3><i class="fas fa-heart"></i> Familia</h3>
+                    <p>Casado con Antonela Roccuzzo desde 2017. Tiene tres hijos: Thiago, Mateo y Ciro. Es reconocido por su perfil humilde, su labor filantrópica a través de la Fundación Leo Messi, apoyando salud, educación y deporte para niños vulnerables.</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-content">
+                    <h3><i class="fas fa-hand-sparkles"></i> Embajador global</h3>
+                    <p>Embajador de UNICEF, Goodwill Ambassador. Además, es el deportista con más premios Laureus (2) y uno de los atletas mejor pagados del mundo, pero siempre manteniendo una imagen de cercanía y pasión por el juego.</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-content">
+                    <h3><i class="fas fa-microphone-alt"></i> Frase célebre</h3>
+                    <p class="quote" style="background: none; padding: 0; text-align: left; font-style: italic;">"Siempre dije que quería retirarme con un título del mundo, no podía pedir algo más. Es para mis hijos, para mi familia, para toda la gente que me apoyó."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Línea de tiempo extra de goles emblemáticos (bonus) -->
+    <section>
+        <h2 class="section-title">✨ Momentos inolvidables</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-year">2007 - Gol a Getafe</div>
+                <p>El famoso 'Maradoniano': recorrió medio campo, dribló a 5 rivales y anotó uno de los goles más bellos de la historia, idéntico al gol del siglo de Maradona.</p>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-year">2009 - Final Champions contra Manchester United</div>
+                <p>Gol de cabeza en la final de Roma, un tanto inesperado que selló el triplete del Barça de Guardiola.</p>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-year">2011 - 'La manita' en el Bernabéu</div>
+                <p>Semifinal de Champions: Messi desequilibró con dos goles, incluido un regate memorable y definición ante Casillas.</p>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-year">2022 - Doblete en la final del Mundo</div>
+                <p>Dos goles en la épica final contra Francia (3-3) y luego anotó en los penales. Una actuación para la eternidad.</p>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <p><i class="fas fa-futbol"></i> Sitio homenaje a Lionel Andrés Messi | Leyenda viva del deporte mundial <i class="fas fa-futbol"></i></p>
+    <p style="margin-top: 0.8rem;">Datos actualizados hasta 2025 · Fuentes oficiales: FC Barcelona, MLS, AFA, FIFA, UEFA.</p>
+    <p style="margin-top: 0.5rem; font-size:0.7rem;">"Gracias, Leo, por tanto fútbol y tanta magia"</p>
+</footer>
+
+</body>
+</html>
